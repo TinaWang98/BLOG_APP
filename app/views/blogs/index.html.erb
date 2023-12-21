@@ -4,6 +4,12 @@
     <h1>Blogs</h1>
   </div>
   <div class="col">
+    <% if user_signed_in? %>
+      <h1> Welcome, <%= current_user.email%></h1>
+      <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete} %>
+    <% else %>
+      <%= link_to 'Sign in', new_user_session_path %>
+    <% end %>
     <%= link_to "New blog", new_blog_path, class:"btn btn-primary btn-block" %>
   </div>
 </div>
