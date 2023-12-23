@@ -11,14 +11,18 @@
   </ul>
   <div class="card-body">
     <div class="row">
-      <% unless current_page?(blogs_path)%>
+
+      <!-- <% unless request.path == blogs_path%>
         <%= link_to "All Blogs", blogs_path, class: "btn btn-primary col m-1"%>
-      <% end %>
+      <% end %> -->
 
       <%= link_to "View", blog_path(blog), class: "btn btn-success col m-1" %>
 
       <!-- Display Edit button only if the current yser owns the blog -->
-      <%= link_to "Edit", edit_blog_path(blog), class: "btn btn-warning col m-1" if current_user == blog.user%>
+      <% if user_signed_in? && @blog && current_user == @blog.user %>
+        <%= link_to "Edit", edit_blog_path(blog), class: "btn btn-warning col m-1" %>
+      <% end %>
+      
 
       <!-- <%= button_to "Destroy", blog, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %> -->
     </div> 
