@@ -1,5 +1,5 @@
 
-<div class="card my-3" style="width: 45rem;" id="<%= dom_id blog %>">
+<div class="card my-4" style="width: 45rem;" id="<%= dom_id blog %>">
   <%# <img src="..." class="card-img-top" alt="..."> %>
   <div class="card-header">
     <h5 class="card-title">
@@ -16,7 +16,7 @@
         <%= link_to "All Blogs", blogs_path, class: "btn btn-primary col m-1"%>
       <% end %> -->
 
-      <%= link_to "View", blog_path(blog), class: "btn btn-success col m-1" %>
+      <%= link_to "Read more", blog_path(blog), class: "btn btn-success col m-1" %>
 
       <!-- Display Edit button only if the current yser owns the blog -->
       <% if user_signed_in? && @blog && current_user == @blog.user %>
