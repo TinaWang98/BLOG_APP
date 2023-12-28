@@ -13,7 +13,5 @@
  *= require_tree .
  *= require_self
  */
- .nav-link-no-underline {
-    text-decoration: none; /* Removes the underline */
-  }
+
   

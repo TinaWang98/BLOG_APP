@@ -1,35 +1,35 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
-  <div class="container">
-      <div class="container-fluid">
-        <span class="navbar-brand">TechBlogs</span>
-      </div>
+  <div class="container-fluid">
+      
+    <span class="navbar-brand mb-0 h1">TechBlogs</span>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarScrol">
+      <form class="d-flex">
+        <%= form_tag(blogs_path, method: "get") do %>
+          <%= text_field_tag :q, params[:q], class: "form-control me-2", placeholder: "Search" %>
+          <%= submit_tag "Search", class: "btn btn-outline-success" %>
+        <% end %>
+      </form>
+      <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
         <li class="nav-item">
-          <%= link_to 'New Blog', new_blog_path, class: "nav-link nav-link-no-underline" %>
+          <%= link_to 'New Blog', new_blog_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <% if user_signed_in? %>
             <span class="navbar-text mr-3">
               Welcome, <%= current_user.email %>
             </span>
-            <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link nav-link-no-underline" %>
+            <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
           <% else %>
-            <%= link_to 'Sign in', new_user_session_path, class: "nav-link nav-link-no-underline align-middle" %>
+            <%= link_to 'Sign in', new_user_session_path, class: "nav-link" %>
           <% end %>
         </li>
       </ul>
+
     </div>
   </div>
 </nav>
 
-<%= form_tag(blogs_path, method: "get", class: "form-inline") do %>
-  <div class="form-group">
-    <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Search" %>
-  </div>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
 
 <div id="blogs">
   <% @blogs.each do |blog| %>
@@ -37,6 +37,4 @@
     <%= render blog %>
   <% end %>
 </div>
-
-
 
