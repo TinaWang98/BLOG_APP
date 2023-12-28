@@ -24,6 +24,13 @@
   </div>
 </nav>
 
+<%= form_tag(blogs_path, method: "get", class: "form-inline") do %>
+  <div class="form-group">
+    <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Search" %>
+  </div>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
 <div id="blogs">
   <% @blogs.each do |blog| %>
 
