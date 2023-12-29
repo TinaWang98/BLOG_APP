@@ -13,7 +13,7 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'devise'
-gem 'rubygems-update', '~> 3.1', '>= 3.1.2'
+gem 'rubygems-update', '~> 3.2', '>= 3.2.3'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
