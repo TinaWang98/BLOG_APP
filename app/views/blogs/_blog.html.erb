@@ -6,17 +6,17 @@
     <%= blog.title %>
     </h5>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= blog.body %></li>
-  </ul>
+
   <div class="card-body">
     <div class="row">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= blog.body %></li>
+      </ul>
 
-      <!-- <% unless request.path == blogs_path%>
-        <%= link_to "All Blogs", blogs_path, class: "btn btn-primary col m-1"%>
-      <% end %> -->
+      <% if request.path != blog_path(blog) %>
+        <%= link_to "Read more", blog_path(blog), class: "btn btn-success col m-1"%>
 
-      <%= link_to "Read more", blog_path(blog), class: "btn btn-success col m-1" %>
+      <% end %>
 
       <!-- Display Edit button only if the current yser owns the blog -->
       <% if user_signed_in? && @blog && current_user == @blog.user %>
