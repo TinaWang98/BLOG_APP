@@ -1,0 +1,4 @@
+services:
+  - type: web
+    buildCommand: "bundle install && rake db:migrate"
+    startCommand: "rails server -b 0.0.0.0 -p $PORT"
