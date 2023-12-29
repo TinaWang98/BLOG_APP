@@ -18,13 +18,10 @@
 
       <% end %>
 
-      <!-- Display Edit button only if the current yser owns the blog -->
-      <% if user_signed_in? && @blog && current_user == @blog.user %>
-        <%= link_to "Edit", edit_blog_path(blog), class: "btn btn-warning col m-1" %>
+      <% if show_edit_button? %>
+        <%= link_to "Edit", edit_blog_path(blog), class: "btn btn-warning col m-1"%>
+        <!-- <%= button_to "Destroy", blog, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger col m-1" %> -->
       <% end %>
-      
-
-      <!-- <%= button_to "Destroy", blog, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %> -->
     </div> 
   </div>
 </div>

@@ -4,4 +4,5 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
   root "blogs#index"
+  get 'dashboard', to: 'dashboard#index', as: 'user_dashboard'
 end
