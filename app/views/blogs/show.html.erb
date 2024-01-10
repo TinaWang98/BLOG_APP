@@ -9,6 +9,15 @@
   <!-- Display Blog Details -->
   <%= render @blog%>
 
+  <h2>Topics:</h2>
+  <ul>
+    <% @blog.categories.each do |category| %>
+      <li><%= category.name %></li>
+    <% end %>
+
+  </ul>
+
+
   <div class="my-4">
     <!-- <%= link_to "Edit this blog", edit_blog_path(@blog) if current_user == @blog.user %> | -->
     <%= link_to "Back to blogs", blogs_path %>

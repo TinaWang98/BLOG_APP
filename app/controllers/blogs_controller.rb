@@ -5,10 +5,15 @@ class BlogsController < ApplicationController
 
   # GET /blogs or /blogs.json
   def index
+    @blogs = Blog.all
+
     if params[:q].present?
       @blogs = Blog.where("title LIKE ? OR body LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
-    else
-      @blogs = Blog.all
+    end
+
+    if params[:category].present?
+      @category = Category.find_by(name: params[:category])
+      @blogs = @category? @category.blogs : []
     end
   end
 
@@ -33,6 +38,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.save
+        @blog.category_ids = params[:blog][:category_ids]
         format.html { redirect_to blog_url(@blog), notice: "Blog was successfully created." }
         format.json { render :show, status: :created, location: @blog }
       else
