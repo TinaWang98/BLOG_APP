@@ -11,13 +11,19 @@
         <% end %>
       </form>
 
-
       <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
-        <% Category.all.each do |category| %>
+              <% Category.all.each do |category| %>
           <li class="nav-item">
             <%= link_to category.name, blogs_path(category: category.name), class: "nav-link" %>
           </li>
         <% end %>
+      </ul>
+
+
+
+
+      <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
+
         <li class="nav-item">
           <%= link_to 'New Blog', new_blog_path, class: "nav-link" %>
         </li>
