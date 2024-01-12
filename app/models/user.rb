@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :blogs
   has_many :comments, dependent: :destroy
+
+  def update_user(params)
+    update(params)
+  end
 end
